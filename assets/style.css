@@ -1,0 +1,207 @@
+/* DARK MODE - BIRD Clone */
+
+:root {
+  --bg: #121212;
+  --text: #eee;
+  --card: #1e1e1e;
+  --border: #333;
+  --accent: #ffa73c;
+  --accent-hover: #e09136;
+  --chat-sent: #007bff;
+  --chat-received: #2a2a2a;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 20px;
+  margin: 0;
+}
+
+/* Logo + Header */
+.logo-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.logo-header img {
+  width: 80px;
+}
+.logo-header h1 {
+  font-size: 32px;
+  margin-top: 10px;
+  font-weight: 700;
+}
+.logo-header p {
+  color: var(--accent);
+  font-style: italic;
+}
+
+/* Layout Containers */
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  border: 1px solid var(--border);
+}
+
+/* Buttons */
+button, .btn {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+button:hover, .btn:hover {
+  background-color: var(--accent-hover);
+}
+
+/* Inputs & Forms */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  margin-bottom: 12px;
+  font-size: 16px;
+  background: var(--card);
+  color: var(--text);
+}
+input::placeholder,
+textarea::placeholder {
+  color: #aaa;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.tabs a {
+  text-decoration: none;
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.tabs a.active {
+  background-color: var(--accent);
+  color: black;
+}
+
+/* Chat UI */
+.chat-window {
+  width: 300px;
+  height: 400px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.chat-header {
+  background: var(--accent-hover);
+  padding: 8px 12px;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 8px;
+  overflow-y: auto;
+  font-size: 14px;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* Message bubbles */
+.message {
+  padding: 6px 10px;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  background-color: var(--chat-received);
+  color: white;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.message-sent {
+  align-self: flex-end;
+  background-color: var(--chat-sent);
+}
+
+.message-received {
+  align-self: flex-start;
+  background-color: var(--chat-received);
+}
+
+.chat-window form {
+  display: flex;
+  border-top: 1px solid var(--border);
+}
+.chat-window form input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: var(--bg);
+  color: white;
+  font-size: 14px;
+  border-top: 1px solid var(--border);
+}
+
+/* DM Sidebar */
+#dm-bar {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 260px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top-left-radius: 8px;
+  padding: 12px;
+  z-index: 9999;
+  color: white;
+  box-shadow: -2px -2px 10px rgba(0, 0, 0, 0.3);
+}
+#dm-bar strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+#dm-friends {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* Chat Window Container */
+#chat-windows {
+  position: fixed;
+  bottom: 0;
+  right: 270px;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 12px;
+  z-index: 9999;
+}
