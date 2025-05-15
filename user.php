@@ -20,6 +20,16 @@ if (!$user) {
 $profile_user_id = $user['id'];
 $is_self = $profile_user_id === $_SESSION['user_id'];
 
+// Block check (either direction)
+if (isBlocked($_SESSION['user_id'], $profile_user_id)) {
+    echo "<p>{$t['profile_blocked']}</p>";
+    exit;
+}
+
+
+$profile_user_id = $user['id'];
+$is_self = $profile_user_id === $_SESSION['user_id'];
+
 $stmt = $pdo->prepare("SELECT COUNT(*) FROM follows WHERE followed_id = ?");
 $stmt->execute([$profile_user_id]);
 $followerCount = $stmt->fetchColumn();
@@ -60,6 +70,15 @@ if (!$is_self) {
             <button type="submit"><?= $following ? $t['unfollow'] : $t['follow'] ?></button>
         </form>
         <?php endif; ?>
+
+        <?php if (!$is_self): ?>
+    <form method="POST" action="actions/block_user.php" style="margin-top: 10px;">
+        <input type="hidden" name="user_id" value="<?= $profile_user_id ?>">
+        <input type="hidden" name="username" value="<?= htmlspecialchars($user['username']) ?>">
+        <button type="submit">🚫 <?= $t['block_user'] ?? 'Block User' ?></button>
+    </form>
+<?php endif; ?>
+
 
         <!-- TABS -->
         <div style="display: flex; gap: 10px; margin: 20px 0;">

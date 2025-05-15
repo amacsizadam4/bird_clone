@@ -43,10 +43,29 @@ $profile_pic = $user_settings['profile_pic'] ?? '';
             </form>
         </div>
 
-        <!-- Blocked Users Placeholder -->
+        <!-- Blocked Users Section -->
         <div id="setting-blocked" style="display: none;">
             <h4><?= $t['blocked_users'] ?></h4>
-            <p><?= $t['coming_soon'] ?></p>
+            <?php
+            $stmt = $pdo->prepare("SELECT u.id, u.username FROM blocked_users bu JOIN users u ON bu.blocked_id = u.id WHERE bu.blocker_id = ?");
+            $stmt->execute([$_SESSION['user_id']]);
+            $blocked = $stmt->fetchAll();
+
+            if (!$blocked): ?>
+                <p><?= $t['no_blocked_users'] ?? 'You have not blocked anyone.' ?></p>
+            <?php else: ?>
+                <ul style="padding-left: 0; list-style: none;">
+                    <?php foreach ($blocked as $user): ?>
+                        <li style="margin-bottom: 10px;">
+                            <?= htmlspecialchars($user['username']) ?>
+                            <form method="POST" action="actions/unblock_user.php" style="display:inline; margin-left: 10px;">
+                                <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
+                                <button type="submit">❌ <?= $t['unblock_user'] ?></button>
+                            </form>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
         </div>
 
     </div>

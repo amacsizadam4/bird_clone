@@ -86,6 +86,11 @@ return [
 'profile_settings' => 'Profile Settings',
 'save_changes' => 'Save Changes',
 'blocked_users' => 'Blocked Users',
+'unblock_user' => 'Unblock User',
+'no_blocked_users' => 'You have not blocked anyone.',
+'blocked_dm' => 'You cannot message this user.',
+'blocked_follow' => 'You cannot follow this user.',
+'profile_blocked' => 'This profile is unavailable.',
 
 
 ];

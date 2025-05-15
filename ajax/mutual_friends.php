@@ -4,20 +4,28 @@ require '../includes/auth.php';
 
 $user_id = $_SESSION['user_id'];
 
-// Fetch mutual followers with user id
+// Fetch mutual followers excluding blocked users
 $stmt = $pdo->prepare("
     SELECT u.id, u.username, u.profile_pic
     FROM users u
-    WHERE EXISTS (
+    WHERE 
+      EXISTS (
         SELECT 1 FROM follows f1
         WHERE f1.follower_id = ? AND f1.followed_id = u.id
-    ) AND EXISTS (
+      )
+      AND EXISTS (
         SELECT 1 FROM follows f2
         WHERE f2.follower_id = u.id AND f2.followed_id = ?
-    ) AND u.id != ?
+      )
+      AND NOT EXISTS (
+        SELECT 1 FROM blocked_users b
+        WHERE (b.blocker_id = ? AND b.blocked_id = u.id)
+           OR (b.blocker_id = u.id AND b.blocked_id = ?)
+      )
+      AND u.id != ?
     ORDER BY u.username ASC
 ");
-$stmt->execute([$user_id, $user_id, $user_id]);
+$stmt->execute([$user_id, $user_id, $user_id, $user_id, $user_id]);
 $users = $stmt->fetchAll();
 
 if (!$users) {

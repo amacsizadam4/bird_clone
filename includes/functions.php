@@ -21,3 +21,9 @@ function render_user_icon($username, $size = 40) {
             </a>";
 }
 
+function isBlocked($userA_id, $userB_id) {
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT 1 FROM blocked_users WHERE (blocker_id = ? AND blocked_id = ?) OR (blocker_id = ? AND blocked_id = ?)");
+    $stmt->execute([$userA_id, $userB_id, $userB_id, $userA_id]);
+    return (bool) $stmt->fetch();
+}

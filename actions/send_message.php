@@ -2,10 +2,7 @@
 require '../includes/auth.php';
 require '../config.php';
 require '../includes/lang.php';
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+require '../includes/functions.php'; // for isBlocked()
 
 $me = $_SESSION['user_id'];
 $to_username = $_POST['to'] ?? '';
@@ -27,7 +24,14 @@ if (!$to) {
 
 $to_id = $to['id'];
 
-// Check mutual follow
+// 🔐 Check for block in either direction
+if (isBlocked($me, $to_id)) {
+    $blocked_msg = isset($t['blocked_dm']) ? $t['blocked_dm'] : 'You cannot message this user.';
+    exit("<p>$blocked_msg</p>");
+}
+
+
+// ✅ Check mutual follow
 $stmt = $pdo->prepare("
     SELECT 1 FROM follows f1
     JOIN follows f2 ON f1.followed_id = f2.follower_id
@@ -40,10 +44,9 @@ if (!$stmt->fetch()) {
     exit("<p>{$t['not_mutual_follow']}</p>");
 }
 
-// Insert message
+// ✅ Save message
 $stmt = $pdo->prepare("INSERT INTO messages (sender_id, receiver_id, content) VALUES (?, ?, ?)");
 $stmt->execute([$me, $to_id, $content]);
 
-// Reload chat window content
-$_GET['u'] = $to_username; // pass username to load_chat
-include '../ajax/load_chat.php';
+http_response_code(200);
+exit;

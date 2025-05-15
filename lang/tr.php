@@ -84,6 +84,11 @@ return [
 'profile_settings' => 'Profil Ayarları',
 'save_changes' => 'Değişiklikleri Kaydet',
 'blocked_users' => 'Engellenen Kullanıcılar',
+'unblock_user' => 'Engeli Kaldır',
+'no_blocked_users' => 'Henüz kimseyi engellemediniz.',
+'blocked_dm' => 'Bu kullanıcıya mesaj gönderemezsiniz.',
+'blocked_follow' => 'Bu kullanıcıyı takip edemezsiniz.',
+'profile_blocked' => 'Bu profile erişemezsiniz.',
 
 
 ];
