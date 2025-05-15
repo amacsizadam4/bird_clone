@@ -80,8 +80,12 @@ return [
 'invalid_user' => 'Invalid user.',
 'not_mutual_follow' => 'You must follow each other to chat.',
 'type_message' => 'Type a message...',
-'send' => 'Send'
-
+'send' => 'Send',
+'edit_bio' => 'Edit Bio', 
+'change_profile_pic' => 'Change Profile Picture',
+'profile_settings' => 'Profile Settings',
+'save_changes' => 'Save Changes',
+'blocked_users' => 'Blocked Users',
 
 
 ];

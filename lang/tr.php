@@ -78,8 +78,12 @@ return [
 'invalid_user' => 'Geçersiz kullanıcı.',
 'not_mutual_follow' => 'Mesajlaşmak için karşılıklı takip gerekiyor.',
 'type_message' => 'Bir mesaj yaz...',
-'send' => 'Gönder'
-
+'send' => 'Gönder',
+'edit_bio' => 'Biyografi',
+'change_profile_pic' => 'Profil Resmini Değiştir',
+'profile_settings' => 'Profil Ayarları',
+'save_changes' => 'Değişiklikleri Kaydet',
+'blocked_users' => 'Engellenen Kullanıcılar',
 
 
 ];

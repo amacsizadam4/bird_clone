@@ -42,6 +42,12 @@ if (!$is_self) {
 
         <!-- PROFILE HEADER -->
         <h2><?= render_user_icon($user['username'], 50) ?></h2>
+        <?php if (!empty($user['bio'])): ?>
+            <p style="font-size: 0.9em; margin-top: 5px; white-space: pre-line;">
+        <?= nl2br(htmlspecialchars($user['bio'])) ?>
+             </p>
+        <?php endif; ?>
+
         <small>
             <a href="#" onclick="loadFollowList('followers')"><?= $followerCount ?> <?= $t['followers'] ?></a> ·
             <a href="#" onclick="loadFollowList('following')"><?= $followingCount ?> <?= $t['following'] ?></a>

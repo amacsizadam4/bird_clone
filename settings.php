@@ -19,7 +19,7 @@ $profile_pic = $user_settings['profile_pic'] ?? '';
         <h3><?= $t['settings'] ?></h3>
         <ul style="list-style: none; padding-left: 0;">
             <li><a href="#profile" onclick="showSetting('profile')">🔧 <?= $t['profile_settings'] ?></a></li>
-            <li><a href="#dm" onclick="showSetting('dm')">💬 <?= $t['dm_settings'] ?></a></li>
+            <li><a href="#blocked" onclick="showSetting('blocked')">🚫 <?= $t['blocked_users'] ?></a></li>
         </ul>
     </div>
 
@@ -43,9 +43,9 @@ $profile_pic = $user_settings['profile_pic'] ?? '';
             </form>
         </div>
 
-        <!-- Direct Message Settings -->
-        <div id="setting-dm" style="display: none;">
-            <h4><?= $t['dm_settings'] ?></h4>
+        <!-- Blocked Users Placeholder -->
+        <div id="setting-blocked" style="display: none;">
+            <h4><?= $t['blocked_users'] ?></h4>
             <p><?= $t['coming_soon'] ?></p>
         </div>
 

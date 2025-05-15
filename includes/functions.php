@@ -16,7 +16,8 @@ function render_user_icon($username, $size = 40) {
     $escapedImg = htmlspecialchars($img);
 
     return "<a href='user.php?u={$safeUsername}' style='display: inline-flex; align-items: center; gap: 8px; text-decoration: none;'>
-                <img src='uploads/avatars/{$escapedImg}' width='{$size}' height='{$size}' style='border-radius:50%; object-fit:cover;'>
+                <img src='uploads/{$escapedImg}' width='{$size}' height='{$size}' style='border-radius:50%; object-fit:cover;'>
                 {$safeUsername}
             </a>";
 }
+
