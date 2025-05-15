@@ -1,8 +1,6 @@
 <?php
 require 'config.php';
 require 'includes/lang.php';
-include 'templates/language_switcher.php';
-
 session_start();
 
 $error = '';
@@ -25,19 +23,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<h2><?= $t['login'] ?></h2>
-<?php if ($error): ?>
-<p style="color: red;"><?= htmlspecialchars($error) ?></p>
-<?php endif; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $t['login'] ?></title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        input[type=text], input[type=password] {
+            width: 100%; padding: 10px; margin-top: 8px; margin-bottom: 16px; border: 1px solid #ccc; border-radius: 4px;
+        }
+        button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; width: 100%; }
+        button:hover { background: #0056b3; }
+        .error { color: red; margin-bottom: 10px; }
+        .link { margin-top: 15px; text-align: center; display: block; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2><?= $t['login'] ?></h2>
+    <?php if ($error): ?>
+        <p class="error"><?= htmlspecialchars($error) ?></p>
+    <?php endif; ?>
+    <form method="POST">
+        <label><?= $t['username'] ?>:</label>
+        <input type="text" name="username" required>
 
-<form method="POST">
-    <label><?= $t['username'] ?>:</label><br>
-    <input type="text" name="username" required><br><br>
-    
-    <label><?= $t['password'] ?>:</label><br>
-    <input type="password" name="password" required><br><br>
+        <label><?= $t['password'] ?>:</label>
+        <input type="password" name="password" required>
 
-    <button type="submit"><?= $t['login'] ?></button>
-</form>
-
-<p><a href="register.php"><?= $t['dont_have_account'] ?></a></p>
+        <button type="submit"><?= $t['login'] ?></button>
+    </form>
+    <a href="register.php" class="link"><?= $t['dont_have_account'] ?></a>
+</div>
+</body>
+</html>

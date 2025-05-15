@@ -75,6 +75,10 @@ return [
 'reply_placeholder' => 'Yanıtla...',
 'comment_placeholder' => 'Yorum yaz...',
 'comment_button' => 'Yorum Yap',
+'invalid_user' => 'Geçersiz kullanıcı.',
+'not_mutual_follow' => 'Mesajlaşmak için karşılıklı takip gerekiyor.',
+'type_message' => 'Bir mesaj yaz...',
+'send' => 'Gönder'
 
 
 

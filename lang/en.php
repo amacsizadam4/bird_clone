@@ -66,6 +66,22 @@ return [
     'no_users_found' => 'No users found.',
     'search_username' => 'Search username...',
     'no_users_found' => 'No users found.',
+    'total_comments' => 'Comments',
+'quoted_from' => 'Quoted from',
+'post_deleted_or_unavailable' => 'This post is not available.',
+'comment_deleted' => 'This comment was deleted by the creator or a moderator.',
+'delete_comment_confirm' => 'Delete this comment?',
+'reply' => 'Reply',
+'reply_placeholder' => 'Reply...',
+'comment_placeholder' => 'Write a comment...',
+'comment_button' => 'Comment',
+'change_profile_pic' => 'Change Profile Picture',
+'edit_bio' => 'Bio',
+'invalid_user' => 'Invalid user.',
+'not_mutual_follow' => 'You must follow each other to chat.',
+'type_message' => 'Type a message...',
+'send' => 'Send'
+
 
 
 ];

@@ -19,6 +19,7 @@ $users = $stmt->fetchAll();
 
 if (!$users) {
     echo "<p>{$t['no_users_found']}</p>";
+    echo "Return to <a href='index.php'>main page</a>";
     exit;
 }
 
