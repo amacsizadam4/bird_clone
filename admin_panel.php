@@ -45,8 +45,6 @@ if ($_SESSION['username'] !== 'admin') {
 <div class="section">
     <h2>🔍 <?= $t['search_analytics'] ?? 'Search and Analytics' ?></h2>
     <ul>
-        <li><a href="#"><?= $t['search_users'] ?? 'Search users by name/email' ?></a></li>
-        <li><a href="#"><?= $t['search_posts'] ?? 'Search posts by keyword or user' ?></a></li>
         <li><a href="admin/admin_stats.php"><?= $t['stats_summary'] ?? 'See total number of users, posts, likes, comments' ?></a></li>
     </ul>
 </div>
