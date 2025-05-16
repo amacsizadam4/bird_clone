@@ -17,7 +17,7 @@ if (!$users) {
 foreach ($users as $user) {
     $safeUsername = htmlspecialchars($user['username']);
     $pic = $user['profile_pic'] ? htmlspecialchars($user['profile_pic']) : 'default.png';
-    $imgTag = "<img src='/bird_clone/uploads/avatars/$pic' width='24' height='24' style='vertical-align:middle; border-radius:50%; margin-right:8px;'>";
+    $imgTag = "<img src='/bird_clone/uploads/$pic' width='24' height='24' style='vertical-align:middle; border-radius:50%; margin-right:8px;'>";
 
     echo "<div style='padding: 8px; cursor: pointer; display: flex; align-items: center;' onclick=\"window.location.href='/bird_clone/user.php?u=$safeUsername'\">
             $imgTag <span>$safeUsername</span>

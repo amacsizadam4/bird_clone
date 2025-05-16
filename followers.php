@@ -1,6 +1,7 @@
 <?php
 require 'includes/auth.php';
 require 'includes/lang.php';
+require 'includes/functions.php';
 require 'config.php';
 
 $username = $_GET['u'] ?? '';
@@ -11,7 +12,7 @@ $stmt->execute([$username]);
 $user = $stmt->fetch();
 
 if (!$user) {
-    echo "<p>{$t['user_not_found']}</p>";
+    echo "<div class='card'><p>{$t['user_not_found']}</p></div>";
     exit;
 }
 
@@ -25,7 +26,7 @@ if ($type === 'followers') {
         ORDER BY f.created_at DESC
     ");
     $stmt->execute([$uid]);
-    echo "<h4>{$t['followers']}</h4>";
+    $heading = $t['followers'];
 
 } elseif ($type === 'following') {
     $stmt = $pdo->prepare("
@@ -35,22 +36,28 @@ if ($type === 'followers') {
         ORDER BY f.created_at DESC
     ");
     $stmt->execute([$uid]);
-    echo "<h4>{$t['following']}</h4>";
+    $heading = $t['following'];
 
 } else {
-    echo "<p>{$t['invalid_request']}</p>";
+    echo "<div class='card'><p>{$t['invalid_request']}</p></div>";
     exit;
 }
 
 $users = $stmt->fetchAll();
+
+echo "<div class='card'>";
+echo "<h3 style='margin-bottom: 15px;'>$heading</h3>";
+
 if (!$users) {
     echo "<p>{$t['no_users_found']}</p>";
-    exit;
-}
+} else {
+    echo "<ul style='list-style: none; padding: 0;'>";
+    foreach ($users as $u) {
+        $safe = htmlspecialchars($u['username']);
+        
+    echo "<li style='margin-bottom: 10px;'>" . render_user_icon($safe, 24) . "</li>";
 
-echo "<ul style='padding-left: 20px;'>";
-foreach ($users as $u) {
-    $safe = htmlspecialchars($u['username']);
-    echo "<li><a href='user.php?u={$safe}'>{$safe}</a></li>";
+    }
+    echo "</ul>";
 }
-echo "</ul>";
+echo "</div>";

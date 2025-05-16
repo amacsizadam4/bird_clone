@@ -205,3 +205,14 @@ textarea::placeholder {
   gap: 12px;
   z-index: 9999;
 }
+
+a.user-link {
+  color: rgb(220, 156, 19);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+a.user-link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}

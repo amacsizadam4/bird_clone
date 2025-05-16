@@ -30,19 +30,19 @@ $total_comments = $pdo->query("SELECT COUNT(*) FROM comments")->fetchColumn();
 <body>
 <h1><?= $t['stats_summary'] ?? 'Platform Statistics' ?></h1>
 <div class="stat-box">
-    <h2><?= $t['users'] ?? 'Total Users' ?></h2>
+    <h2><?= $t['userss'] ?? 'Total Users' ?></h2>
     <p><?= $total_users ?></p>
 </div>
 <div class="stat-box">
-    <h2><?= $t['posts'] ?? 'Total Posts' ?></h2>
+    <h2><?= $t['postss'] ?? 'Total Posts' ?></h2>
     <p><?= $total_posts ?></p>
 </div>
 <div class="stat-box">
-    <h2><?= $t['likes'] ?? 'Total Likes' ?></h2>
+    <h2><?= $t['likess'] ?? 'Total Likes' ?></h2>
     <p><?= $total_likes ?></p>
 </div>
 <div class="stat-box">
-    <h2><?= $t['comments'] ?? 'Total Comments' ?></h2>
+    <h2><?= $t['commentss'] ?? 'Total Comments' ?></h2>
     <p><?= $total_comments ?></p>
 </div>
 <p><a href="../admin_panel.php">← <?= $t['admin_panel'] ?? 'Back to Admin Panel' ?></a></p>
