@@ -5,6 +5,11 @@ require 'includes/lang.php';
 require 'includes/functions.php';
 include 'templates/header.php';
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
 $filter = $_GET['filter'] ?? 'recent';
 $offset = isset($_GET['offset']) ? (int) $_GET['offset'] : 0;
 $limit = 20;
