@@ -28,3 +28,5 @@ function isBlocked($userA_id, $userB_id) {
     $stmt->execute([$userA_id, $userB_id, $userB_id, $userA_id]);
     return (bool) $stmt->fetch();
 }
+
+//o
