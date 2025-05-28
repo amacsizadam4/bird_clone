@@ -1,111 +1,71 @@
-/* MODERN DARK BLUE THEME */
+/* DARK MODE - BIRD Clone */
+
 :root {
-  --bg: #081427; /* koyu mavi */
-  --bg-darker: #000001; /* siyah */
-  --text: #FEFBF6; /* beyaz */
-  --text-secondary: rgba(254, 251, 246, 0.7);
-  --card: #0a1a33;
-  --card-hover: #112340;
-  --border: #1a2d4d;
-  --accent: #549ee3; /* açık mavi */
-  --accent-hover: #3d8bd9;
-  --accent-transparent: rgba(84, 158, 227, 0.1);
-  --chat-sent: #549ee3;
-  --chat-received: #1a2d4d;
-  --like-color: #ff6b6b;
-  --repost-color: #6bce7d;
+  --bg: #121212;
+  --text: #eee;
+  --card: #1e1e1e;
+  --border: #333;
+  --accent: #ffa73c;
+  --accent-hover: #e09136;
+  --chat-sent: #007bff;
+  --chat-received: #2a2a2a;
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background-color: var(--bg);
   color: var(--text);
   line-height: 1.6;
   padding: 20px;
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* Modern container with max-width */
-.container {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 0 15px;
 }
 
 /* Logo + Header */
 .logo-header {
   text-align: center;
   margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--border);
 }
 .logo-header img {
   width: 80px;
-  filter: drop-shadow(0 2px 8px rgba(84, 158, 227, 0.3));
 }
 .logo-header h1 {
   font-size: 32px;
-  margin: 15px 0 5px;
-  font-weight: 800;
-  background: linear-gradient(90deg, var(--accent), #7ab3e8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  margin-top: 10px;
+  font-weight: 700;
 }
 .logo-header p {
   color: var(--accent);
-  font-size: 1.1em;
-  margin: 0;
+  font-style: italic;
 }
 
-/* Modern card design */
+/* Layout Containers */
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 .card {
   background: var(--card);
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 8px;
+  padding: 16px;
   margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
   border: 1px solid var(--border);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-  background: var(--card-hover);
 }
 
-/* Modern buttons */
+/* Buttons */
 button, .btn {
   background-color: var(--accent);
-  color: var(--bg-darker);
+  color: white;
   border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
+  padding: 8px 16px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
-  transition: all 0.2s ease;
-  font-size: 15px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  transition: background 0.2s;
 }
 button:hover, .btn:hover {
   background-color: var(--accent-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(84, 158, 227, 0.3);
-}
-button:active, .btn:active {
-  transform: translateY(0);
-}
-
-/* Special action buttons */
-form[action*="like.php"] .btn {
-  background-color: var(--accent-transparent);
-  color: var(--like-color);
-}
-form[action*="repost.php"] .btn {
-  background-color: var(--accent-transparent);
-  color: var(--repost-color);
 }
 
 /* Inputs & Forms */
@@ -114,82 +74,54 @@ input[type="email"],
 input[type="password"],
 textarea {
   width: 100%;
-  padding: 12px 15px;
-  border-radius: 8px;
+  padding: 10px;
+  border-radius: 6px;
   border: 1px solid var(--border);
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   font-size: 16px;
   background: var(--card);
   color: var(--text);
-  transition: border-color 0.2s;
-}
-input:focus,
-textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(84, 158, 227, 0.2);
 }
 input::placeholder,
 textarea::placeholder {
-  color: var(--text-secondary);
+  color: #aaa;
 }
 
-/* File input styling */
-input[type="file"] {
-  width: 100%;
-  margin-bottom: 15px;
-  background: var(--card);
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px dashed var(--border);
-  color: var(--text-secondary);
-}
-
-/* Tabs - modern redesign */
+/* Tabs */
 .tabs {
   display: flex;
-  gap: 8px;
-  margin-bottom: 25px;
-  background: var(--card);
-  padding: 8px;
-  border-radius: 10px;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 .tabs a {
   text-decoration: none;
-  color: var(--text-secondary);
-  padding: 8px 16px;
-  border-radius: 8px;
-  transition: all 0.2s;
-  font-weight: 500;
-}
-.tabs a:hover {
   color: var(--text);
-  background: var(--accent-transparent);
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background 0.2s;
 }
 .tabs a.active {
   background-color: var(--accent);
-  color: var(--bg-darker);
-  font-weight: 600;
+  color: black;
 }
 
-/* Chat UI - modern redesign */
+/* Chat UI */
 .chat-window {
-  width: 320px;
-  height: 420px;
+  width: 300px;
+  height: 400px;
   background: var(--card);
   border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
+  border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 .chat-header {
-  background: var(--accent);
-  padding: 12px 16px;
-  font-weight: 700;
-  color: var(--bg-darker);
+  background: var(--accent-hover);
+  padding: 8px 12px;
+  font-weight: bold;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -197,38 +129,32 @@ input[type="file"] {
 
 .chat-messages {
   flex: 1;
-  padding: 12px;
+  padding: 8px;
   overflow-y: auto;
   font-size: 14px;
   background-color: var(--bg);
   color: var(--text);
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent) var(--bg);
 }
 
 /* Message bubbles */
 .message {
-  padding: 10px 14px;
-  margin-bottom: 10px;
-  border-radius: 12px;
+  padding: 6px 10px;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  background-color: var(--chat-received);
   color: white;
   max-width: 80%;
   word-wrap: break-word;
-  line-height: 1.4;
-  font-size: 15px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .message-sent {
   align-self: flex-end;
   background-color: var(--chat-sent);
-  border-bottom-right-radius: 4px;
 }
 
 .message-received {
   align-self: flex-start;
   background-color: var(--chat-received);
-  border-bottom-left-radius: 4px;
 }
 
 .chat-window form {
@@ -237,34 +163,32 @@ input[type="file"] {
 }
 .chat-window form input {
   flex: 1;
-  padding: 12px;
+  padding: 10px;
   border: none;
   background: var(--bg);
   color: white;
   font-size: 14px;
+  border-top: 1px solid var(--border);
 }
 
-/* DM Sidebar - modern redesign */
+/* DM Sidebar */
 #dm-bar {
   position: fixed;
   bottom: 0;
   right: 0;
-  width: 280px;
+  width: 260px;
   background: var(--card);
   border: 1px solid var(--border);
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 0;
-  padding: 16px;
+  border-top-left-radius: 8px;
+  padding: 12px;
   z-index: 9999;
   color: white;
-  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+  box-shadow: -2px -2px 10px rgba(0, 0, 0, 0.3);
 }
 #dm-bar strong {
   display: block;
-  margin-bottom: 12px;
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--accent);
+  margin-bottom: 10px;
+  font-size: 16px;
 }
 #dm-friends {
   max-height: 200px;
@@ -275,117 +199,20 @@ input[type="file"] {
 #chat-windows {
   position: fixed;
   bottom: 0;
-  right: 300px;
+  right: 270px;
   display: flex;
   flex-direction: row-reverse;
-  gap: 15px;
+  gap: 12px;
   z-index: 9999;
 }
 
-/* User links */
 a.user-link {
-  color: var(--accent);
+  color: rgb(220, 156, 19);
   font-weight: 500;
   text-decoration: none;
-  transition: all 0.2s;
 }
+
 a.user-link:hover {
-  color: #7ab3e8;
-  text-decoration: underline;
-}
-
-/* Modal - modern redesign */
-#commentModal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  backdrop-filter: blur(5px);
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
-}
-
-#modalContent {
-  background: var(--card);
-  color: var(--text);
-  padding: 30px;
-  width: 90%;
-  max-width: 900px;
-  max-height: 90vh;
-  overflow-y: auto;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  border: 1px solid var(--border);
-  animation: modalFadeIn 0.3s ease-out;
-}
-
-@keyframes modalFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Images in posts */
-img[src*="uploads/"] {
-  border-radius: 8px;
-  margin: 8px 0;
-  max-width: 100%;
-  height: auto;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  transition: transform 0.2s;
-}
-img[src*="uploads/"]:hover {
-  transform: scale(1.02);
-}
-
-/* Load more button */
-form[method="GET"] {
-  margin: 30px 0;
-}
-form[method="GET"] .btn {
-  background: var(--accent-transparent);
   color: var(--accent);
-  padding: 12px 24px;
-  font-size: 16px;
-}
-form[method="GET"] .btn:hover {
-  background: var(--accent);
-  color: var(--bg-darker);
-}
-
-/* Small screens adjustments */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 10px;
-  }
-  
-  #dm-bar {
-    width: 100%;
-    right: -100%;
-    transition: right 0.3s;
-  }
-  
-  #dm-bar.active {
-    right: 0;
-  }
-  
-  #chat-windows {
-    right: 0;
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .chat-window {
-    width: 100%;
-    height: 300px;
-  }
+  text-decoration: underline;
 }
