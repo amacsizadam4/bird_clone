@@ -216,3 +216,287 @@ a.user-link:hover {
   color: var(--accent);
   text-decoration: underline;
 }
+
+/* Modern Button Styles */
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.action-btn.like-btn:hover {
+    background: rgba(220, 38, 127, 0.2);
+    border-color: #dc267f;
+    color: #ff6b9d;
+}
+
+.action-btn.comment-btn:hover {
+    background: rgba(29, 155, 240, 0.2);
+    border-color: #1d9bf0;
+    color: #1d9bf0;
+}
+
+.action-btn.repost-btn:hover {
+    background: rgba(0, 186, 124, 0.2);
+    border-color: #00ba7c;
+    color: #00ba7c;
+}
+
+.action-btn.quote-btn:hover {
+    background: rgba(255, 212, 0, 0.2);
+    border-color: #ffd400;
+    color: #ffd400;
+}
+
+.action-btn.delete-btn:hover {
+    background: rgba(244, 33, 46, 0.2);
+    border-color: #f4212e;
+    color: #f4212e;
+}
+
+.action-btn .icon {
+    font-size: 16px;
+}
+
+.action-btn .count {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Quote Input Form */
+.quote-form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex: 1;
+    min-width: 200px;
+}
+
+.quote-form input[type="text"] {
+    flex: 1;
+    padding: 6px 12px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+.quote-form input[type="text"]:focus {
+    outline: none;
+    border-color: #ffd400;
+    box-shadow: 0 0 0 2px rgba(255, 212, 0, 0.2);
+}
+
+/* Card Hover Effects */
+.card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Modern Tabs */
+.tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tabs a {
+    text-decoration: none;
+    color: var(--text);
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    flex: 1;
+    text-align: center;
+}
+
+.tabs a.active {
+    background: var(--accent);
+    color: #000;
+    box-shadow: 0 2px 8px rgba(255, 167, 60, 0.3);
+}
+
+.tabs a:not(.active):hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Post Form */
+.post-form {
+    background: linear-gradient(135deg, var(--card) 0%, rgba(30, 30, 30, 0.8) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.post-form textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    resize: vertical;
+}
+
+.post-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(255, 167, 60, 0.2);
+}
+
+/* File Input Styling */
+.file-inputs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+.file-input-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.file-input-wrapper input[type=file] {
+    position: absolute;
+    left: -9999px;
+}
+
+.file-input-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 13px;
+    color: var(--text);
+}
+
+.file-input-label:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Quote Modal */
+.quote-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    z-index: 10001;
+}
+
+.quote-modal-content {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px;
+    width: 90%;
+    max-width: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.quote-modal h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: var(--text);
+}
+
+.quote-modal textarea {
+    width: 100%;
+    min-height: 100px;
+    margin-bottom: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: var(--text);
+    padding: 12px;
+    resize: vertical;
+}
+
+.quote-modal-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.quote-modal-buttons button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.quote-modal-buttons .cancel-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+}
+
+.quote-modal-buttons .submit-btn {
+    background: var(--accent);
+    color: #000;
+}
+
+/* Animation for modal */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.quote-modal.show .quote-modal-content {
+    animation: modalFadeIn 0.3s ease;
+}
