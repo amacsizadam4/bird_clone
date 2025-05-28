@@ -1,15 +1,17 @@
 /* DARK MODE - BIRD Clone */
 
+
 :root {
-  --bg: #121212;
-  --text: #eee;
-  --card: #1e1e1e;
-  --border: #333;
-  --accent: #ffa73c;
-  --accent-hover: #e09136;
-  --chat-sent: #007bff;
-  --chat-received: #2a2a2a;
+  --bg: #081427;          /* koyu mavi */
+  --text: #FEFBF6;        /* beyaz */
+  --card: #000001;        /* siyah */
+  --border: #081427;      /* koyu mavi for border */
+  --accent: #549ee3;      /* açık mavi */
+  --accent-hover: #4b8cd0;/* darker tone of açık mavi */
+  --chat-sent: #549ee3;   /* açık mavi */
+  --chat-received: #000001; /* siyah */
 }
+
 
 body {
   font-family: 'Segoe UI', sans-serif;
