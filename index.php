@@ -9,7 +9,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
 $filter = $_GET['filter'] ?? 'recent';
 $offset = isset($_GET['offset']) ? (int) $_GET['offset'] : 0;
 $limit = 20;
@@ -73,9 +72,11 @@ switch ($filter) {
 
     foreach ($thoughts as $thought):
         $target_id = $thought['original_thought_id'] ?: $thought['id'];
-        $likeCount = $pdo->query("SELECT COUNT(*) FROM likes WHERE thought_id = $target_id")->fetchColumn();
-        $repostCount = $pdo->query("SELECT COUNT(*) FROM thoughts WHERE original_thought_id = $target_id")->fetchColumn();
-        $quoteCount = $pdo->query("SELECT COUNT(*) FROM thoughts WHERE quote_id = $target_id")->fetchColumn();
+        $likeCount = getThoughtLikesCount($target_id);
+        $repostCount = getThoughtRepostsCount($target_id);
+        $quoteCount = $pdo->prepare("SELECT COUNT(*) FROM thoughts WHERE quote_id = ?");
+        $quoteCount->execute([$target_id]);
+        $quoteCount = $quoteCount->fetchColumn();
     ?>
 
     <div onclick="openModal(<?= $target_id ?>)" class="card" style="cursor: pointer;">
@@ -92,9 +93,8 @@ switch ($filter) {
             <p><?= nl2br(htmlspecialchars($thought['content'])) ?></p>
 
             <?php
-            $stmt2 = $pdo->prepare("SELECT image_path FROM thought_images WHERE thought_id = ?");
-            $stmt2->execute([$thought['id']]);
-            foreach ($stmt2->fetchAll() as $img) {
+            $images = getImagesForThought($thought['id']);
+            foreach ($images as $img) {
                 echo "<img src='uploads/" . htmlspecialchars($img['image_path']) . "' width='150' style='margin: 5px;'>";
             }
             ?>
@@ -134,9 +134,8 @@ switch ($filter) {
         </div>
 
         <?php
-        $comment_stmt = $pdo->prepare("SELECT comments.content, users.username FROM comments JOIN users ON comments.user_id = users.id WHERE comments.thought_id = ? ORDER BY comments.created_at DESC LIMIT 3");
-        $comment_stmt->execute([$target_id]);
-        foreach ($comment_stmt->fetchAll() as $comment) {
+        $comments = getCommentsByThought($target_id);
+        foreach (array_slice($comments, 0, 3) as $comment) {
             echo "<div style='margin-top:5px; margin-left:20px; font-size:0.9em; border-left:2px solid var(--border); padding-left:10px;'>";
             echo "<strong>" . render_user_icon($comment['username'], 20) . ":</strong> " . htmlspecialchars($comment['content']);
             echo "</div>";
@@ -176,7 +175,6 @@ switch ($filter) {
         box-shadow: 0 0 20px rgba(0,0,0,0.6);
     "></div>
 </div>
-
 
 <script>
 function openModal(thoughtId) {
